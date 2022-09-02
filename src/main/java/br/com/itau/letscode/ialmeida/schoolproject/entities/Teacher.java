@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -23,7 +20,11 @@ public class Teacher {
     @GeneratedValue
     @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(unique = true, nullable = false)
     private Long cpf;
 
     public Teacher(TeacherRequest teacherRequest) {
