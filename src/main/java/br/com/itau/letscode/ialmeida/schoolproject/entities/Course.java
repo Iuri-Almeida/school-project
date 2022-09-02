@@ -21,6 +21,8 @@ public class Course {
     @GeneratedValue
     @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
+
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL)
