@@ -1,5 +1,6 @@
 package br.com.itau.letscode.ialmeida.schoolproject.entities;
 
+import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.CourseRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,5 +24,10 @@ public class Course {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Teacher teacher;
+
+    public Course(CourseRequest courseRequest) {
+        this.name = courseRequest.getName();
+        this.teacher = courseRequest.getTeacher();
+    }
 
 }
