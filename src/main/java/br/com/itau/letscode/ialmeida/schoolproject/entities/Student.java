@@ -18,7 +18,7 @@ public class Student {
 
     @Id
     @GeneratedValue
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
 
     private String name;

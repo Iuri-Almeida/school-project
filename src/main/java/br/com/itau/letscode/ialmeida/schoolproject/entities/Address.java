@@ -20,7 +20,7 @@ public class Address {
 
     @Id
     @GeneratedValue
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
     private String street;
     private Long number;
