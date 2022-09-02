@@ -1,5 +1,6 @@
 package br.com.itau.letscode.ialmeida.schoolproject.entities;
 
+import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.TeacherRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,10 @@ public class Teacher {
     private UUID id;
     private String name;
     private Long cpf;
+
+    public Teacher(TeacherRequest teacherRequest) {
+        this.name = teacherRequest.getName();
+        this.cpf = teacherRequest.getCpf();
+    }
 
 }
