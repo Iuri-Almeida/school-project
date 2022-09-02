@@ -1,6 +1,7 @@
 package br.com.itau.letscode.ialmeida.schoolproject.entities;
 
 import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.CourseRequest;
+import br.com.itau.letscode.ialmeida.schoolproject.dtos.response.CourseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,10 @@ public class Course {
     public Course(CourseRequest courseRequest) {
         this.name = courseRequest.getName();
         this.teacher = courseRequest.getTeacher();
+    }
+
+    public CourseResponse toResponse() {
+        return new CourseResponse(this.name);
     }
 
 }
