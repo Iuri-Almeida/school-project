@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  api:
+    container_name: school-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - backend
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+
+  db:
+    container_name: school-db
+    image: buildo/h2database
+    restart: always
+    networks:
+      - backend
+
+networks:
+  backend:
