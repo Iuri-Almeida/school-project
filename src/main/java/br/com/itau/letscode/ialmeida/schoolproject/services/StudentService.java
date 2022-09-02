@@ -2,6 +2,7 @@ package br.com.itau.letscode.ialmeida.schoolproject.services;
 
 import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.StudentRequest;
 import br.com.itau.letscode.ialmeida.schoolproject.dtos.response.StudentResponse;
+import br.com.itau.letscode.ialmeida.schoolproject.entities.Address;
 import br.com.itau.letscode.ialmeida.schoolproject.entities.Student;
 import br.com.itau.letscode.ialmeida.schoolproject.exceptions.StudentNotFoundException;
 import br.com.itau.letscode.ialmeida.schoolproject.repositories.StudentRepository;
@@ -63,21 +64,10 @@ public class StudentService {
             student.setCpf(studentRequest.getCpf());
         }
 
-        if (studentRequest.getActivated() != null) {
-            student.setActivated(studentRequest.getActivated());
-        }
-
         if (studentRequest.getAddress() != null) {
-            student.setAddress(studentRequest.getAddress());
+            student.setAddress(new Address(studentRequest.getAddress()));
         }
 
-        if (studentRequest.getGrades() != null) {
-            student.setGrades(studentRequest.getGrades());
-        }
-
-        if (studentRequest.getCourses() != null) {
-            student.setCourses(studentRequest.getCourses());
-        }
     }
 
     public void deleteById(UUID id) {
