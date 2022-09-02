@@ -25,10 +25,11 @@ public class Student {
     @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
 
+    @Column(nullable = false)
     private String name;
     private Integer age;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private Long cpf;
 
     private Boolean activated;
