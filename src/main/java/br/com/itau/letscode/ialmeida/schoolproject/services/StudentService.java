@@ -30,10 +30,9 @@ public class StudentService {
         return studentResponses;
     }
 
-    public StudentResponse findById(UUID id) {
-        Student student = studentRepository.findById(id)
+    public Student findById(UUID id) {
+        return studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException("Student with id = " + id + " not found."));
-        return student.toResponse();
     }
 
     private Student findByCpf(Long cpf) {
@@ -70,8 +69,18 @@ public class StudentService {
 
     }
 
+    public void activate(UUID id) {
+        Student student = this.findById(id);
+        student.setActivated(true);
+    }
+
     public void deleteById(UUID id) {
         studentRepository.deleteById(id);
+    }
+
+    public void deleteByCpf(Long cpf) {
+        Student student = this.findByCpf(cpf);
+        studentRepository.deleteById(student.getId());
     }
 
 }

@@ -26,7 +26,7 @@ public class StudentController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<StudentResponse> findById(@PathVariable UUID id) {
-        return ResponseEntity.ok().body(studentService.findById(id));
+        return ResponseEntity.ok().body(studentService.findById(id).toResponse());
     }
 
     @PostMapping
@@ -41,9 +41,21 @@ public class StudentController {
         return ResponseEntity.ok().body(studentService.update(studentRequest));
     }
 
+    @PatchMapping(value = "/{id}/activate")
+    public ResponseEntity<Void> activate(@PathVariable UUID id) {
+        studentService.activate(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         studentService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping(value = "/cpf/{cpf}")
+    public ResponseEntity<Void> delete(@PathVariable Long cpf) {
+        studentService.deleteByCpf(cpf);
         return ResponseEntity.noContent().build();
     }
 
