@@ -1,5 +1,6 @@
 package br.com.itau.letscode.ialmeida.schoolproject.entities;
 
+import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.GradeRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,10 @@ public class Grade {
     private UUID id;
     private String content;
     private Double grade;
+
+    public Grade(GradeRequest gradeRequest) {
+        this.content = gradeRequest.getContent();
+        this.grade = gradeRequest.getGrade();
+    }
 
 }
