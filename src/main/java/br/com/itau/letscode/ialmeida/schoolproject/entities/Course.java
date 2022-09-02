@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -23,5 +20,8 @@ public class Course {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
     private String name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Teacher teacher;
 
 }
