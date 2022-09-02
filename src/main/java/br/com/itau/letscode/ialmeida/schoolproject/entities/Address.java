@@ -1,5 +1,6 @@
 package br.com.itau.letscode.ialmeida.schoolproject.entities;
 
+import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.AddressRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,14 @@ public class Address {
     private String complement;
     private String city;
     private String state;
+
+    public Address(AddressRequest addressRequest) {
+        this.street = addressRequest.getStreet();
+        this.number = addressRequest.getNumber();
+        this.cep = addressRequest.getCep();
+        this.complement = addressRequest.getComplement();
+        this.city = addressRequest.getCity();
+        this.state = addressRequest.getState();
+    }
 
 }
