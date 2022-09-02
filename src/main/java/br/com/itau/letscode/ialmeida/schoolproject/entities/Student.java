@@ -1,6 +1,8 @@
 package br.com.itau.letscode.ialmeida.schoolproject.entities;
 
 import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.StudentRequest;
+import br.com.itau.letscode.ialmeida.schoolproject.dtos.response.CourseResponse;
+import br.com.itau.letscode.ialmeida.schoolproject.dtos.response.StudentResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -48,6 +50,10 @@ public class Student {
         this.address = studentRequest.getAddress();
         this.grades = new ArrayList<>();
         this.courses = new ArrayList<>();
+    }
+
+    public StudentResponse toResponse() {
+        return new StudentResponse(this.id, this.name, this.age, this.cpf);
     }
 
 }
