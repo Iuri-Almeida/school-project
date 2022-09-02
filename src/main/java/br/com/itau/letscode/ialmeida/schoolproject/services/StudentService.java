@@ -40,8 +40,8 @@ public class StudentService {
                 .orElseThrow(() -> new StudentNotFoundException("Student with cpf = " + cpf + " not found."));
     }
 
-    public void insert(StudentRequest studentRequest) {
-        studentRepository.save(new Student(studentRequest));
+    public StudentResponse insert(StudentRequest studentRequest) {
+        return studentRepository.save(new Student(studentRequest)).toResponse();
     }
 
     public StudentResponse update(StudentRequest studentRequest) {
@@ -80,9 +80,8 @@ public class StudentService {
         }
     }
 
-    public void delete(StudentRequest studentRequest) {
-        Student student = this.findByCpf(studentRequest.getCpf());
-        studentRepository.deleteById(student.getId());
+    public void deleteById(UUID id) {
+        studentRepository.deleteById(id);
     }
 
 }
