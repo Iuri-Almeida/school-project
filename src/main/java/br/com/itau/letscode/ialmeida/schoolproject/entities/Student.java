@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Audited
+@AuditTable(value = "student_aud")
 public class Student {
 
     @Id
@@ -33,12 +38,15 @@ public class Student {
 
     private Boolean activated;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
     @OneToMany(cascade = CascadeType.ALL)
     private List<Grade> grades;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.AUDITED)
     @OneToMany(cascade = CascadeType.ALL)
     private List<Course> courses;
 
