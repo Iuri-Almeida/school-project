@@ -4,7 +4,7 @@ import br.com.itau.letscode.ialmeida.schoolproject.dtos.request.StudentRequest;
 import br.com.itau.letscode.ialmeida.schoolproject.dtos.response.StudentResponse;
 import br.com.itau.letscode.ialmeida.schoolproject.entities.Address;
 import br.com.itau.letscode.ialmeida.schoolproject.entities.Student;
-import br.com.itau.letscode.ialmeida.schoolproject.exceptions.StudentNotFoundException;
+import br.com.itau.letscode.ialmeida.schoolproject.exceptions.ResourceNotFoundException;
 import br.com.itau.letscode.ialmeida.schoolproject.repositories.StudentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,12 +32,12 @@ public class StudentService {
 
     public Student findById(UUID id) {
         return studentRepository.findById(id)
-                .orElseThrow(() -> new StudentNotFoundException("Student with id = " + id + " not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Student with id = " + id + " not found."));
     }
 
     private Student findByCpf(Long cpf) {
         return studentRepository.findByCpf(cpf)
-                .orElseThrow(() -> new StudentNotFoundException("Student with cpf = " + cpf + " not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Student with cpf = " + cpf + " not found."));
     }
 
     public StudentResponse insert(StudentRequest studentRequest) {
